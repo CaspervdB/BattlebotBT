@@ -1,5 +1,8 @@
 package btconn;
 
+import btconn.bluetooth.ConnectionBT;
+import btconn.database.ConnectionDB;
+
 public class Main {
 
     public static void main(String[] args)

@@ -1,4 +1,4 @@
-package btconn;
+package btconn.bluetooth;
 
 public class ConnectionBT {
 
