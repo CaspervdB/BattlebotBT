@@ -51,6 +51,6 @@ public class ConnectionDB {
 
     public void delete(int cmdId) throws Exception
     {
-        stmt.execute(String.format("DELETE FROM `user_command` WHERE `id` = %d", cmdId));
+        stmt.execute(String.format("DELETE FROM `user_cmd` WHERE `id` = %d", cmdId));
     }
 }

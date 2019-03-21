@@ -28,4 +28,9 @@ public class DeviceBT {
             conn_string = String.format("btspp://%s:1;authenticate=false;encrypt=false;master=false", address);
         }
     }
+
+    public String getConnString()
+    {
+        return conn_string;
+    }
 }

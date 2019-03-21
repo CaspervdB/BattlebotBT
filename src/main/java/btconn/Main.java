@@ -18,7 +18,7 @@ public class Main {
 //            connectionDB.inserQuery("INSERT INTO `user_command`(`user_id`, `cmd_id`) VALUES (%d, '%s') ", 9981, "s");
 //            connectionDB.inserQuery("INSERT INTO `user_command`(`user_id`, `cmd_id`) VALUES (%d, '%s') ", 9981, "d");
             while(true) {
-                ArrayList<UserCommand> userCommands = connectionDB.executeQueryus("SELECT * FROM `user_command`");
+                ArrayList<UserCommand> userCommands = connectionDB.executeQueryus("SELECT * FROM `user_cmd`");
                 for (UserCommand userCommand : userCommands) {
                     System.out.println(userCommand.toString() + "\n");
                     connectionDB.delete(userCommand.getId());
