@@ -8,11 +8,6 @@ public class DeviceBT {
     {
 
     }
-    public DeviceBT(String name, String address)
-    {
-        this.name = name;
-        this.address = address;
-    }
 
     public void setName(String name)
     {
@@ -22,5 +17,15 @@ public class DeviceBT {
     public void setAddress(String address)
     {
         this.name = address;
+    }
+
+    public void createConn_string() throws Exception
+    {
+        if(address == null)
+        {
+            throw new Exception("The address is empty");
+        }else{
+            conn_string = String.format("btspp://%s:1;authenticate=false;encrypt=false;master=false", address);
+        }
     }
 }
