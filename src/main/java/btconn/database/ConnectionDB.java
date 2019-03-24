@@ -1,5 +1,7 @@
 package btconn.database;
 
+import btconn.bluetooth.DeviceBT;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -35,10 +37,10 @@ public class ConnectionDB {
     }
 
 
-    public ArrayList<UserCommand> executeQueryus(String sql) throws Exception
+    public ArrayList<UserCommand> getCommands() throws Exception
     {
         ArrayList<UserCommand> userCommands = new ArrayList<UserCommand>();
-        ResultSet rs = stmt.executeQuery(sql);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM `user_cmd`");
         while(rs.next())
         {
             UserCommand userCommand = new UserCommand(Integer.parseInt(rs.getString("ID")),
@@ -52,5 +54,16 @@ public class ConnectionDB {
     public void delete(int cmdId) throws Exception
     {
         stmt.execute(String.format("DELETE FROM `user_cmd` WHERE `id` = %d", cmdId));
+    }
+
+    public ArrayList<DeviceBT> getBluetoothNames() throws Exception
+    {
+        ArrayList<DeviceBT> btNames = new ArrayList<DeviceBT>();
+        ResultSet rs = stmt.executeQuery("SELECT `user_id`, `name` FROM `arduino`");
+        while(rs.next())
+        {
+            btNames.add(new DeviceBT(Integer.parseInt(rs.getString("user_id")), rs.getString("name")));
+        }
+        return btNames;
     }
 }

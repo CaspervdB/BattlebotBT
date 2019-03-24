@@ -1,5 +1,7 @@
 package btconn.bluetooth;
 
+import btconn.database.ConnectionDB;
+
 import javax.bluetooth.DeviceClass;
 import javax.bluetooth.DiscoveryListener;
 import javax.bluetooth.RemoteDevice;
@@ -12,10 +14,15 @@ public class ListenerBT implements DiscoveryListener {
     private ArrayList<DeviceBT> devices;
     /// this is a boolean representing the state of the listener
     private boolean listening;
-    public ListenerBT()
+    /// array of names of bluetooth devices
+
+    private boolean state;
+
+    public ListenerBT(ArrayList<DeviceBT> devices)
     {
-        devices = new ArrayList<DeviceBT>();
+        this.devices = devices;
         listening = true;
+        state = true;
     }
 
     public void deviceDiscovered(RemoteDevice remoteDevice, DeviceClass deviceClass) {
@@ -29,11 +36,31 @@ public class ListenerBT implements DiscoveryListener {
         }
         btDevice.setAddress(remoteDevice.getBluetoothAddress());
         try{
-            btDevice.createConn_string();
-            this.devices.add(btDevice);
+            for(int i = 0; i < devices.size(); i++)
+            {
+                if(devices.get(i).getName().contains(btDevice.getName()))
+                {
+                    btDevice.createConn_string();
+                    btDevice.setUser_id(devices.get(i).getUser_id());
+                    devices.set(i, btDevice);
+                    System.out.println(btDevice);
+                }
+            }
         }catch (Exception ex)
         {
 
+        }
+        boolean discoveredDevices = true;
+        for(DeviceBT device : devices)
+        {
+            if(device.getAddress() == null)
+            {
+                discoveredDevices = false;
+            }
+        }
+        if(discoveredDevices)
+        {
+            state = false;
         }
     }
 
@@ -52,5 +79,14 @@ public class ListenerBT implements DiscoveryListener {
     public boolean isRunning()
     {
         return listening;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public ArrayList<DeviceBT> getDevices()
+    {
+        return devices;
     }
 }
