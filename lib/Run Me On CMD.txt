@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile='lib/bluecove-2.1.2.jar' -DgroupId='net.sf.bluecove' -DartifactId=jacocontrol -Dversion='2.1.2-SNAPSHOT' -Dpackaging=jar -DgeneratePom=false
