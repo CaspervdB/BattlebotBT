@@ -15,11 +15,20 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.15</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sf.bluecove/bluecove -->
-        <dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.bluecove/bluecove
+
+         <dependency>
             <groupId>net.sf.bluecove</groupId>
             <artifactId>bluecove</artifactId>
             <version>2.1.2</version>
+        </dependency>
+         -->
+
+        <!-- https://mvnrepository.com/artifact/io.ultreia/bluecove -->
+        <dependency>
+            <groupId>io.ultreia</groupId>
+            <artifactId>bluecove</artifactId>
+            <version>2.1.1</version>
         </dependency>
 
     </dependencies>
