@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        ConnectionBT connectionBT = new ConnectionBT("This is my fancy BT connection steen bij 101");
+        ConnectionBT connectionBT = new ConnectionBT("This is my fancy BT connection");
         try{
             ConnectionDB connectionDB = new ConnectionDB();
             connectionDB.executeQuery("SELECT * FROM `users`");
